@@ -21,6 +21,9 @@ class CommonItem extends Item {
       this.quality = this.quality - 2;
     }
     this.sellIn--;
+    if (this.quality < 0) {
+      this.quality = 0;
+    }
   }
 }
 
@@ -37,6 +40,9 @@ class ConjuredItem extends Item {
       this.quality = this.quality - 4;
     }
     this.sellIn--;
+    if (this.quality < 0) {
+      this.quality = 0;
+    }
   }
 }
 
@@ -48,6 +54,9 @@ class AgedBrie extends Item {
   updateQuality() {
     this.quality++;
     this.sellIn--;
+    if (this.quality > 50) {
+      this.quality = 50;
+    }
   }
 }
 
@@ -58,10 +67,10 @@ class BackstagePass extends Item {
 
   updateQuality() {
     if (this.sellIn >= 0) {
-      if (this.sellin > 10) {
+      if (this.sellIn > 10) {
         this.quality = this.quality + 1;
       } 
-      else if (this.sellin > 5) {
+      else if (this.sellIn > 5) {
         this.quality = this.quality + 2;
       }
       else {
@@ -72,17 +81,20 @@ class BackstagePass extends Item {
       this.quality = 0;
     }
     this.sellIn--;
+    if (this.quality > 50) {
+      this.quality = 50;
+    }
   }
 }
 
 class Sulfuras extends Item {
   constructor(name, quality) {
     super(name, quality);
-    quality = SULFURAS_QUALITY;
+    this.quality = SULFURAS_QUALITY;
   }
 
   updateQuality() {
-    console.log("nothing happens...");
+    return this;
   }
 }
 
