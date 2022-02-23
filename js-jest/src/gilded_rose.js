@@ -14,7 +14,7 @@ class CommonItem extends Item {
   }
 
   updateQuality() {
-    if (this.sellIn >= 0) {
+    if (this.sellIn > 0) {
       this.quality--;
     }
     else {
@@ -33,7 +33,7 @@ class ConjuredItem extends Item {
   }
 
   updateQuality() {
-    if (this.sellIn >= 0) {
+    if (this.sellIn > 0) {
       this.quality = this.quality - 2;
     }
     else {
@@ -66,7 +66,7 @@ class BackstagePass extends Item {
   }
 
   updateQuality() {
-    if (this.sellIn >= 0) {
+    if (this.sellIn > 0) {
       if (this.sellIn > 10) {
         this.quality = this.quality + 1;
       } 
@@ -80,6 +80,7 @@ class BackstagePass extends Item {
     else {
       this.quality = 0;
     }
+    
     this.sellIn--;
     if (this.quality > 50) {
       this.quality = 50;
